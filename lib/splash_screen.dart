@@ -4,9 +4,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:myapp/dasboard_screen.dart';
-// import 'package:myapp/login_screen.dart';
+import 'package:myapp/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -28,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
       } else {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => DashboardScreen()),
+          MaterialPageRoute(builder: (context) => LoginScreen()),
         );
       }
     });
@@ -37,27 +39,45 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(
-              Icons.lock,
-              size: 100,
-              color: Colors.white,
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Welcome to Cek Warga',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+      backgroundColor: Colors.blue[50],
+      body: Stack(
+        children: [
+          // Elemen teks dan loading di bagian atas
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  top: 50.0), // Berikan sedikit padding dari atas
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Text(
+                    'Selamat Datang di CekWarga',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+          // Gambar di bagian dasar halaman
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Image.asset(
+              'assets/images/bg.png',
+              height: 450, // Sesuaikan ukuran gambar
+              width: 450, // Sesuaikan ukuran gambar
+              fit: BoxFit.contain,
+            ),
+          ),
+        ],
       ),
     );
   }

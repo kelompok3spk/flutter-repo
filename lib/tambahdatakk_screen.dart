@@ -111,6 +111,8 @@ class DataKartuKeluargaForm extends StatelessWidget {
   final TextEditingController alamatController = TextEditingController();
   final TextEditingController kodePosController = TextEditingController();
 
+  DataKartuKeluargaForm({super.key});
+
   void _saveDataToFirebase(BuildContext context) async {
     final docKK = FirebaseFirestore.instance.collection('kartu_keluarga').doc();
     await docKK.set({
@@ -139,7 +141,7 @@ class DataKartuKeluargaForm extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Selamat Datang, Cek Warga!"),
         backgroundColor: Colors.white,
-        foregroundColor: const Color.fromARGB(255, 3, 11, 19),
+        foregroundColor: const Color.fromARGB(255, 152, 182, 211),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
@@ -188,7 +190,9 @@ class DataKartuKeluargaForm extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
         controller: controller,
-        keyboardType: label == "Jumlah Anggota" ? TextInputType.number : TextInputType.text,
+        keyboardType: label == "Jumlah Anggota"
+            ? TextInputType.number
+            : TextInputType.text,
         decoration: InputDecoration(
           labelText: label,
           border: const OutlineInputBorder(),

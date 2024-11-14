@@ -11,6 +11,8 @@ import 'galeriinput_screen.dart';
 // }
 
 class GaleriPage extends StatelessWidget {
+  const GaleriPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +61,7 @@ class GaleriPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => GaleriInputPage()),
+                          builder: (context) => const GaleriInputPage()),
                     );
                     // Aksi Tambah
                   },

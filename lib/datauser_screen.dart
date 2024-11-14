@@ -5,6 +5,8 @@ import 'dasboard_screen.dart';
 import 'login_screen.dart';
 
 class DataUserPage extends StatefulWidget {
+  const DataUserPage({super.key});
+
   @override
   _DataUserPageState createState() => _DataUserPageState();
 }
